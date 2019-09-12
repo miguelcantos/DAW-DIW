@@ -1,5 +1,10 @@
-* 93cf306 (HEAD -> master, Feature-CambioNombres) Cambios realizados
-* d98279e (origin/master, origin/HEAD, Master) subir ejercicio
+*   ff7f560 (HEAD -> master) Merge branch 'Feature-CambioNombres'
+|\  
+| * e8fdeb9 (origin/Feature-CambioNombres, Feature-CambioNombres) Ejercicio 2
+* | 249a3b3 (origin/master, origin/HEAD) Ejercicio 2
+|/  
+* 93cf306 Cambios realizados
+* d98279e (Master) subir ejercicio
 * 1a0794a subir ejercicio1
 * a8cc5db + otro.txt y Ultimo.txt
 * 52586db +Anyado diferente.txt
