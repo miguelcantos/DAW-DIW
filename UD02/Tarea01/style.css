@@ -1,5 +1,6 @@
 nav{
     background-color: #66E874;
+    width: 100%;
   }
 
   nav a{
@@ -12,7 +13,6 @@ nav{
   div{
     text-align: center;
     background-color: #70FFA8;
-    
     width: 100%;
   }
   article{
@@ -39,7 +39,7 @@ nav{
         clear:left;
     }
     nav{
-        position: absolute ;
         width: 100%;
+
     }
 }
