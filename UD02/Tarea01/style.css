@@ -1,0 +1,45 @@
+nav{
+    background-color: #66E874;
+  }
+
+  nav a{
+    margin: 2%;
+    font-size: 20px;
+    text-decoration:none;
+    color: black;
+  }
+  
+  div{
+    text-align: center;
+    background-color: #70FFA8;
+    
+    width: 100%;
+  }
+  article{
+    background-color: #99FF7D;
+    margin: 4%;
+    display: inline-block;
+    width: 25%;
+  }
+  article h1{
+    background-color: #C4FF30;
+  }
+  article img {
+      width: 80%;
+      height: 80%;
+      margin-bottom: 5%;
+  }
+  .imagen{
+    margin-left: 10%;
+  }
+@media (max-width:850px){
+
+    nav a {
+        float: left;
+        clear:left;
+    }
+    nav{
+        position: absolute ;
+        width: 100%;
+    }
+}
