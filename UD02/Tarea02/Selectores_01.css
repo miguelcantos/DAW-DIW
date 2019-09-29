@@ -1,0 +1,63 @@
+body{
+  font-family: 'Open Sans';
+  background: grey;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+h1{
+  text-align: center;
+}
+
+nav{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+ul{
+    display: inline-block;
+    list-style: none;
+}
+
+li{
+    width: 15%;
+    padding: 5%;
+    display: inline-block;
+}
+
+a[rel='alternate']:before{
+  display: inline-block;
+}
+
+a[rel='next']:before{
+  display: inline-block;
+  content: url('favorite-24px.svg');
+}
+
+a[rel='tag']:before{
+  display: inline-block;
+  content: url('favorite_border-24px.svg');
+}
+
+a[rel='bookmark']:before{
+  display: inline-block;
+  content: url('favorite-24px.svg');
+}
+
+a[rel='help']:before{
+  display: inline-block;
+  content: url('favorite_border-24px.svg');
+}
+
+a[rel='search']:before{
+  display: inline-block;
+  content: url('favorite-24px.svg');
+}
+
+a[rel='nofollow']:before{
+  display: inline-block;
+  content: url('favorite_border-24px.svg');
+}
