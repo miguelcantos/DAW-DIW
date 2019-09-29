@@ -9,7 +9,7 @@ nav{
     text-decoration:none;
     color: black;
   }
-  
+
   div{
     text-align: center;
     background-color: #70FFA8;
@@ -40,6 +40,6 @@ nav{
     }
     nav{
         width: 100%;
-
+        
     }
 }
