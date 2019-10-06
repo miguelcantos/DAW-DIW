@@ -1,0 +1,42 @@
+body{
+  font-family: 'Grenze';
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+input[type='text']{
+ background-color: yellow;
+}
+
+input[id='puntosCordura']{
+  background-color: yellow;
+}
+
+input:target{
+  text-decoration: none;
+  background-color: pink;
+}
+
+input[id='nombre']:invalid{
+  background-color: red
+}
+
+input[id='puntosCordura']:invalid{
+  background-color: red;
+}
+
+input[type='submit']{
+  border: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background-color: yellow;
+  box-shadow: 0.2em 0.5em 0.1em #600;
+}
+
+select[id='profesion']{
+  font-family: 'Grenze';
+  border-radius: 30px;
+}
