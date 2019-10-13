@@ -89,3 +89,12 @@ h1{
 .item:hover:nth-child(odd)+.item,.item:hover:nth-child(odd){
   box-shadow: 5px 5px 5px black;
 }
+
+#SealOfApproval{
+  background-image: url(cthulhu_approval.gif);
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
