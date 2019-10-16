@@ -16,6 +16,39 @@
     grid-template-columns: repeat(21, 1fr);
     grid-template-rows: repeat(13, 1fr);
 }
+
+.wazowski{
+    width: 100%;
+    height:  100px;
+    background: url("../imagenes/wazowski.png") no-repeat center;
+    background-color: black;
+    background-size: 72px;
+
+}
+.piedra{
+    width: 100%;
+    height:  100px;
+    background: url("../imagenes/piedra.jpg");
+    background-color: black;
+    background-size: 100%;
+}
+
+.huellas{
+    width: 100%;
+    height:  100px;
+    background: url("../imagenes/huellas.png") no-repeat center;
+    background-color: black;
+    background-size: 72px;
+}
+
+.sullivan{
+    width: 100%;
+    height:  100px;
+    background: url("../imagenes/sullivan.png") no-repeat center;
+    background-color: black;
+    background-size: 72px;
+}
+
 body{
     background-color: brown;
 }
