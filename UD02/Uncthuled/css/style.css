@@ -3,18 +3,18 @@
     height:  100px;
     background-color: black;
 }
- 
- 
+
+
 .bloque{
     width: 100%;
     height:  100px;
     background-color: white;
 }
- 
+
 .mapa{
     display: grid;
-    grid-template-columns: repeat(21, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-columns: repeat(23, 1fr);
+    grid-template-rows: repeat(15, 1fr);
 }
 
 .wazowski{
