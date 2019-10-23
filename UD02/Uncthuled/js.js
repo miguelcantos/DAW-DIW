@@ -1,5 +1,5 @@
 var PersonajeX = 0;
-var PersonajeY = 5;
+var PersonajeY = 4;
 mapa =[[3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
        [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
@@ -18,12 +18,11 @@ mapa =[[3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
 
 window.onload=function(){
     listo();
-
 }
 
 function listo(){
   crearMapa();
-  
+  document.addEventListener('keydown', moverte);
 }
 
 function crearMapa(){
@@ -65,7 +64,7 @@ function moverte(tecla){
 
     var key = tecla.keyCode;
 
-    switch (tecla) {
+    switch (key) {
         case 38:
             moverArriba();
             break;
@@ -88,36 +87,73 @@ function moverte(tecla){
 
 function moverAbajo(){
   console.log("Abajo");
-  if(mapa[PersonajeX+1][PersonajeY] != 1){
-    mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
-    PersonajeX++;
-    mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
-  }
+    
+    if (mapa[PersonajeX+1][PersonajeY].classList.value.includes("huellas")) {
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeX++;
+      mapa[PersonajeX][PersonajeY].classList.replace("huellas","wazowski");
+
+    }else if(mapa[PersonajeX+1][PersonajeY].classList.value.includes("camino")){
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeX++;
+      mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
+    }else{
+      console.log("muro");
+    }
 }
 
 function moverArriba(){
   console.log("Arriba");
-  if(mapa[PersonajeX-1][PersonajeY] != 1){
-    mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
-    PersonajeX--;
-    mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
-  }
+
+    if (mapa[PersonajeX-1][PersonajeY].classList.value.includes("huellas")) {
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeX--;
+      mapa[PersonajeX][PersonajeY].classList.replace("huellas","wazowski");
+
+    }else if(mapa[PersonajeX-1][PersonajeY].classList.value.includes("camino")){
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeX--;
+      mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
+
+    }else{
+      console.log("muro");
+    }
 }
 
 function moverDerecha(){
   console.log("Derecha");
-  if(mapa[PersonajeX1][PersonajeY+1] != 1){
-    mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
-    PersonajeY++;
-    mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
-  }
+  
+
+    if (mapa[PersonajeX][PersonajeY+1].classList.value.includes("huellas")) {
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeY++;
+      mapa[PersonajeX][PersonajeY].classList.replace("huellas","wazowski");
+
+    }else if(mapa[PersonajeX][PersonajeY+1].classList.value.includes("camino")){
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeY++;
+      mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
+
+    }else{
+      console.log("muro");
+    }
 }
 
 function moverIzquierda(){
   console.log("Izquierda");
-  if(mapa[PersonajeX][PersonajeY-1] != 1){
-    mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
-    PersonajeY--;
-    mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
-  }
+
+    if (mapa[PersonajeX][PersonajeY-1].classList.value.includes("huellas")){
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeY--;
+      mapa[PersonajeX][PersonajeY].classList.replace("huellas","wazowski"); 
+
+    }else if(mapa[PersonajeX][PersonajeY-1].classList.value.includes("camino")){
+      mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
+      PersonajeY--;
+      mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
+
+    }else{
+      console.log("muro");
+    }
 }
+
