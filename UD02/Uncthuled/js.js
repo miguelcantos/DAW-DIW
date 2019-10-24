@@ -2,17 +2,17 @@ var PersonajeX = 0;
 var PersonajeY = 4;
 mapa =[[3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
-       [3,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
+       [3,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,11,11,11,0,3],
        [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,3],
        [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]];
 
@@ -97,9 +97,12 @@ function moverAbajo(){
       mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
       PersonajeX++;
       mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
+
     }else{
       console.log("muro");
     }
+    marcar();
+    comprobarBloque();
 }
 
 function moverArriba(){
@@ -114,10 +117,12 @@ function moverArriba(){
       mapa[PersonajeX][PersonajeY].classList.replace("wazowski","huellas");
       PersonajeX--;
       mapa[PersonajeX][PersonajeY].classList.replace("camino","wazowski");
-
+      
     }else{
       console.log("muro");
     }
+    marcar();
+    comprobarBloque();
 }
 
 function moverDerecha(){
@@ -137,6 +142,8 @@ function moverDerecha(){
     }else{
       console.log("muro");
     }
+    marcar();
+    comprobarBloque();
 }
 
 function moverIzquierda(){
@@ -155,5 +162,68 @@ function moverIzquierda(){
     }else{
       console.log("muro");
     }
+    marcar();
+    comprobarBloque();
+}
+
+function marcar(){
+  
+  if(mapa[PersonajeX][PersonajeY+1].classList.contains("bloque")){
+    mapa[PersonajeX][PersonajeY+1].classList.add("pisado");
+
+  }
+  if(mapa[PersonajeX][PersonajeY-1].classList.contains("bloque")){
+    mapa[PersonajeX][PersonajeY-1].classList.add("pisado");
+
+  }
+  if(mapa[PersonajeX-1][PersonajeY].classList.contains("bloque")){
+    mapa[PersonajeX-1][PersonajeY].classList.add("pisado");
+
+  }
+  if(mapa[PersonajeX+1][PersonajeY].classList.contains("bloque")){
+    mapa[PersonajeX+1][PersonajeY].classList.add("pisado");
+
+  }
+}
+
+function comprobarBloque(){
+  var X = 2;
+  var Y = 2;
+  for (let i = 1; i < 6; i++) {
+        for (let j = 1; j < 5; j++) {
+            comprobar(X,Y);
+            X+=3;
+            console.log(X+" "+Y)         
+        }
+    Y+=4;     
+  }
+
+}
+
+function comprobar(X, Y){
+  var contador=0;
+  for (let i = 1; i < 4; i++) {
+      
+      for (let j = 1; j < 3; j++) {
+
+        if(mapa[X][Y].classList.contains("pisado")){
+          contador++;
+        }
+        X++;
+      }
+    Y++; 
+  }
+  if(contador == 6){
+    for (let i = 1; i < 4; i++) {
+      
+      for (let j = 1; j < 3; j++) {
+
+        mapa[X][Y].classList.add("entero");
+        X++;
+      }
+      Y++;  
+  }
+  }
+
 }
 
