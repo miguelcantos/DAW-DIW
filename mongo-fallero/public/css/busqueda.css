@@ -39,11 +39,7 @@ h1{
   width: 30%;
 }
 
-#anoMin{
-  width: 14.5%;
-}
-
-#anoMax{
+#anoMin, #anoMax{
   width: 14.5%;
 }
 

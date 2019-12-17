@@ -7,9 +7,13 @@ const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falle
 // una serie de requisitos.
 
 function filtroLetra(elemento){
-    let letra=document.querySelector(`input[name="nombre"]`).value;
-    return elemento.properties.calle.startsWith(letra);
+    let letra = document.querySelector(`input[name="nombre"]`).value;
+    return elemento.properties.nombre.startsWith(letra);
 }
+
+function toUpp() {
+	document.querySelector(`input[name="nombre"]`).value = document.querySelector(`input[name="nombre"]`).value.toUpperCase();
+  }
 
 function buscar(){
 
@@ -23,20 +27,22 @@ function buscar(){
 	// Y entonces
     }).then(respuesta =>{
 	// Filtramos los resultados con el filtro definido anteriormente
-	const resultado=respuesta.features.filter(filtroLetra);
+	const resultado = respuesta.features.filter(filtroLetra);
 
 	// Una vez tenemos el listado filtrado pasamos a crear
 	// cada uno de los <Div> que representan
 	let listado = document.createElement("div");
 
 	// Por cada uno de ellos
-	resultado.forEach(fuente=>{
+	resultado.forEach(falla=>{
 	    // Creamos un <Div>
-	    let divFalla = document.createElement("div");
-	    divFalla.innerHTML = "<img src=" + divFalla.properties.boceto + ">" + divFalla.properties.nombre;
+		let divFalla = document.createElement("div");
+
+	    divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
 	    // Lo anyadimos
-	    listado.appendChild(falla);
+	    listado.appendChild(divFalla);
 	});
+	
 	// Establecemos el listado en la Web
 	document.querySelector(".resultados").innerHTML="";
 	document.querySelector(".resultados").appendChild(listado);
