@@ -1,6 +1,6 @@
 body {
   font: 100% Helvetica, sans-serif;
-  background-color: #444; }
+  background-color: #bfb496; }
 
 .resultados ul li {
   border: 1px solid grey;
@@ -11,3 +11,43 @@ body {
 .resultados ul li {
   list-style: none;
   width: 50vw; }
+
+h1{
+  text-align: center;
+  font: oblique bold 120% cursive;
+  font-size: 40px;
+}
+
+#nombre{
+  width: 26.5%;
+}
+
+#busquedaform{
+  margin-top: 5%;
+}
+
+#seccionFalla{
+  margin-bottom: 1%;
+}
+
+#principalInfantil{
+  margin-top: 1%;
+  font: oblique bold 120% cursive;
+}
+
+#seleccionSec{
+  width: 30%;
+}
+
+#anoMin{
+  width: 14.5%;
+}
+
+#anoMax{
+  width: 14.5%;
+}
+
+label{
+   font: oblique bold 120% cursive;
+  font-size: 24px;
+}

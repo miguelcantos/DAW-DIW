@@ -17,12 +17,31 @@
 
   <body>
 
-    <h1> [ Open Data ] - Áreas Escolarizacion</h1>
+    <h1> [ Open Data ] - Momumentos falleros</h1>
 
     <div class="busqueda">
       <form id="busquedaform">
-	<input type="text" name="calle">
-	<input type="button" value="Buscar">
+	       <input type="text" name="nombre" id="nombre">
+	       <input type="button" value="Buscar">
+      </form>
+      <br>
+
+      <form id="seccionFalla">
+	       <label> Seleccione la sección de la falla</label><br>
+         <select name="seleccionSec" id="seleccionSec">
+           <option>Primera</option>
+           <option>Segunda</option>
+           <option>Tercera</option>
+         </select>
+      </form>
+
+      <label>Año de fundación de la falla</label><br>
+      <input type="number" name="anoMin" id="anoMin" placeholder="DESDE" min="1600" max="2030">
+      <input type="number" name="anoMax" id="anoMax" placeholder="HASTA" min="1600" max="2030"><br>
+
+      <form id="principalInfantil">
+        <input type="radio" name="principal" > Principal<br>
+        <input type="radio" name="infantil" > Infantil<br>
       </form>
     </div>
 

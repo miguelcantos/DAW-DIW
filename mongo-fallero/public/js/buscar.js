@@ -1,24 +1,15 @@
 // Algunos valores
 
-const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/areas-escolarizacion/JSON";
+const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
 
 // Esta es la funcion de filtrado para
 // obtener tan solo los elementos que cumplen
 // una serie de requisitos.
 
 function filtroLetra(elemento){
-    let letra=document.querySelector(`input[name="calle"]`).value;
+    let letra=document.querySelector(`input[name="nombre"]`).value;
     return elemento.properties.calle.startsWith(letra);
 }
-
-
-// Pasa a mayuscula el texto de propio input
-// se lanza cada vez que se realiza una insercion en
-// el texto del nombre.
-function toUpp(){
-    document.querySelector(`input[name="calle"]`).value=document.querySelector(`input[name="calle"]`).value.toUpperCase();
-}
-
 
 function buscar(){
 
@@ -35,16 +26,16 @@ function buscar(){
 	const resultado=respuesta.features.filter(filtroLetra);
 
 	// Una vez tenemos el listado filtrado pasamos a crear
-	// cada uno de los <li> que representan
-	let listado=document.createElement("ul");
+	// cada uno de los <Div> que representan
+	let listado = document.createElement("div");
 
 	// Por cada uno de ellos
 	resultado.forEach(fuente=>{
-	    // Creamos un <li>
-	    let calleli=document.createElement("li");
-	    calleli.innerHTML=fuente.properties.calle+ " -- Tipo de boca " + fuente.properties.bocas + " -- Estado : "+ fuente.properties.estado  +" -- ["+fuente.geometry.coordinates+"]";
+	    // Creamos un <Div>
+	    let divFalla = document.createElement("div");
+	    divFalla.innerHTML = "<img src=" + divFalla.properties.boceto + ">" + divFalla.properties.nombre;
 	    // Lo anyadimos
-	    listado.appendChild(calleli);
+	    listado.appendChild(falla);
 	});
 	// Establecemos el listado en la Web
 	document.querySelector(".resultados").innerHTML="";
