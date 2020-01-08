@@ -6,6 +6,9 @@ const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falle
 // obtener tan solo los elementos que cumplen
 // una serie de requisitos.
 
+//array de secciones
+var secciones = new Array;
+
 function filtroLetra(elemento){
     let letra = document.querySelector(`input[name="nombre"]`).value;
     return elemento.properties.nombre.startsWith(letra);
@@ -40,7 +43,8 @@ function buscar(){
 
 	    divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
 	    // Lo anyadimos
-	    listado.appendChild(divFalla);
+		listado.appendChild(divFalla);
+		
 	});
 	
 	// Establecemos el listado en la Web
@@ -53,12 +57,36 @@ function buscar(){
 function init(){
 
     // Binding de los eventos correspondientes.
-
     // Click en el boton de buscar
     document.querySelector(`input[type="button"]`).addEventListener("click",buscar);
     // Texto cambia en el <input>
-    document.querySelector(`input[type="text"]`).addEventListener("input",toUpp);
+	document.querySelector(`input[type="text"]`).addEventListener("input",toUpp);
+	
+	const fetchPromesa = fetch(fuentesUrl);
+	fetchPromesa.then(response => {
+		return response.json();
+	}).then(respuesta =>{
+		const resultado = respuesta.features;
+
+		resultado.forEach(falla =>{
+			if (secciones.includes(falla.properties.seccion) === false) secciones.push(falla.properties.seccion);
+			if (secciones.includes(falla.properties.seccion_i) === false) secciones.push(falla.properties.seccion_i);
+			
+		});
+		
+		lanzarSeccion();
+	});
+
 }
 
+function lanzarSeccion() {
+	let desSeccion = document.getElementById("seleccionSec");
+
+	for (let index = 0; index < secciones.length; index++) {
+		var option = document.createElement("option");
+		option.text = secciones[index];
+		desSeccion.add(option);
+	}
+}
 // The mother of the lamb.
 window.onload=init;

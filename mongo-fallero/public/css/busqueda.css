@@ -2,6 +2,12 @@ body {
   font: 100% Helvetica, sans-serif;
   background-color: #bfb496; }
 
+.resultados{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+}
+
 .resultados ul li {
   border: 1px solid grey;
   padding: 10px;
