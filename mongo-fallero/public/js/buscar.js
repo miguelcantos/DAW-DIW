@@ -68,13 +68,25 @@ function init(){
 	}).then(respuesta =>{
 		const resultado = respuesta.features;
 
+		let listado = document.createElement("div");
+
 		resultado.forEach(falla =>{
+
 			if (secciones.includes(falla.properties.seccion) === false) secciones.push(falla.properties.seccion);
 			if (secciones.includes(falla.properties.seccion_i) === false) secciones.push(falla.properties.seccion_i);
+			
+			let divFalla = document.createElement("div");
+
+	    	divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
+	    	// Lo anyadimos
+			listado.appendChild(divFalla);
 			
 		});
 		
 		lanzarSeccion();
+		document.querySelector(".resultados").innerHTML="";
+		document.querySelector(".resultados").appendChild(listado);
+
 	});
 
 }
@@ -86,7 +98,9 @@ function lanzarSeccion() {
 		var option = document.createElement("option");
 		option.text = secciones[index];
 		desSeccion.add(option);
+
 	}
 }
+
 // The mother of the lamb.
 window.onload=init;
