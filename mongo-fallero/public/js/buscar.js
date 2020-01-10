@@ -45,11 +45,12 @@ function buscar(){
 		// Creamos un <Div>
 		
 		let divFalla = document.createElement("div");
+		divFalla.classList.add("individual");
 
 	    divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
 	    // Lo anyadimos
 		listado.appendChild(divFalla);
-		
+		 
 	});
 	
 	// Establecemos el listado en la Web
