@@ -37,6 +37,7 @@ function buscar(){
 	// cada uno de los <Div> que representan
 
 	let listado = document.createElement("div");
+	listado.classList.add("celdas");
 
 	// Por cada uno de ellos
 	resultado.forEach(falla=>{
@@ -73,6 +74,7 @@ function init(){
 		const resultado = respuesta.features;
 
 		let listado = document.createElement("div");
+		listado.classList.add("celdas");
 
 		resultado.forEach(falla =>{
 
@@ -80,6 +82,8 @@ function init(){
 			if (secciones.includes(falla.properties.seccion_i) === false) secciones.push(falla.properties.seccion_i);
 			
 			let divFalla = document.createElement("div");
+			divFalla.classList.add("individual");
+
 
 	    	divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
 	    	// Lo anyadimos
