@@ -19,13 +19,6 @@
 
     <h1> [ Open Data ] - Momumentos falleros</h1>
 
-    <div class="busqueda">
-      <form id="busquedaform">
-	       <input type="text" name="nombre" id="nombre">
-	       <input type="button" value="Buscar">
-      </form>
-      <br>
-
       <form id="seccionFalla">
 	       <label> Seleccione la sección de la falla</label><br>
          <select name="seleccionSec" id="seleccionSec">
@@ -38,15 +31,17 @@
       <input type="number" name="anoMax" id="anoMax" placeholder="HASTA" min="1600" max="2100"><br>
 
       <form id="principalInfantil">
-        <input type="radio" name="tipo" > Principal<br>
-        <input type="radio" name="tipo" > Infantil<br>
+        <input type="radio" id="principal" name="tipo" checked> Principal<br>
+        <input type="radio" id="infantil" name="tipo" > Infantil<br>
       </form>
     </div>
+    <form id="busquedaform">
+       <input type="button" value="Buscar">
+    </form>
     <br>
     <div class="resultados">
 
     </div>
-
 
   </body>
 </html>

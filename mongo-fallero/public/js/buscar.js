@@ -9,7 +9,7 @@ const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falle
 //array de secciones
 var secciones = new Array;
 
-/* 
+/*
 function filtroLetra(elemento){
     let letra = document.querySelector(`input[name="nombre"]`).value;
     return elemento.properties.nombre.startsWith(letra);
@@ -20,7 +20,7 @@ function toUpp() {
 } */
 
 function buscar(){
-
+  console.log("buscar");
     // Obtenemos el JSON que esta definido
     const fetchPromesa = fetch(fuentesUrl);
 
@@ -38,25 +38,90 @@ function buscar(){
 
 	let listado = document.createElement("div");
 	listado.classList.add("celdas");
+  let checked = document.getElementById("principal").checked;
 
 	// Por cada uno de ellos
 	resultado.forEach(falla=>{
-		
-		// Creamos un <Div>
-		
-		let divFalla = document.createElement("div");
-		divFalla.classList.add("individual");
 
-	    divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
-	    // Lo anyadimos
-		listado.appendChild(divFalla);
-		 
+    let secciones = document.getElementById("seleccionSec");
+    let anoMax = document.getElementById("anoMax").value;
+    let anoMin = document.getElementById("anoMin").value;
+		// Creamos un <Div>
+    if(secciones.value =="Todas"){
+      if(checked){
+        // solo funciona si los dos campos estan vacios o los dos campos estan llenos
+        if(anoMax == 0 && anoMin == 0){
+          let divFalla = document.createElement("div");
+          divFalla.classList.add("individual");
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+            // Lo anyadimos
+            listado.appendChild(divFalla);
+        // solo funciona si los dos campos estan vacios o los dos campos estan llenos
+         }else if((falla.properties.anyo_fundacion >= anoMin) && (falla.properties.anyo_fundacion <= anoMax) ){
+           let divFalla = document.createElement("div");
+           divFalla.classList.add("individual");
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+             // Lo anyadimos
+             listado.appendChild(divFalla);
+         }
+      }else{
+        // solo funciona si los dos campos estan vacios o los dos campos estan llenos
+        if(anoMax == 0 && anoMin == 0){
+          let divFalla = document.createElement("div");
+          divFalla.classList.add("individual");
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+            // Lo anyadimos
+            listado.appendChild(divFalla);
+         }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
+           let divFalla = document.createElement("div");
+           divFalla.classList.add("individual");
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+             // Lo anyadimos
+             listado.appendChild(divFalla);
+         }
+      }
+
+    } else if( falla.properties.seccion == secciones.value){
+      if(checked){
+        // solo funciona si los dos campos estan vacios o los dos campos estan llenos
+        if(anoMax == 0 && anoMin == 0){
+          let divFalla = document.createElement("div");
+          divFalla.classList.add("individual");
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+            // Lo anyadimos
+            listado.appendChild(divFalla);
+         }else if((falla.properties.anyo_fundacion >= anoMin) && (falla.properties.anyo_fundacion <= anoMax) ){
+           let divFalla = document.createElement("div");
+           divFalla.classList.add("individual");
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+             // Lo anyadimos
+             listado.appendChild(divFalla);
+         }
+      }else{
+        // solo funciona si los dos campos estan vacios o los dos campos estan llenos
+        if(anoMax == 0 && anoMin == 0){
+          let divFalla = document.createElement("div");
+          divFalla.classList.add("individual");
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+            // Lo anyadimos
+            listado.appendChild(divFalla);
+         }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
+           let divFalla = document.createElement("div");
+           divFalla.classList.add("individual");
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+             // Lo anyadimos
+             listado.appendChild(divFalla);
+         }
+      }
+
+    }
+
+
 	});
-	
+
 	// Establecemos el listado en la Web
 	document.querySelector(".resultados").innerHTML="";
 	document.querySelector(".resultados").appendChild(listado);
-	console.log("Buscar");
     });
 
 }
@@ -66,7 +131,7 @@ function init(){
     // Binding de los eventos correspondientes.
     // Click en el boton de buscar
     document.querySelector(`input[type="button"]`).addEventListener("click",buscar);
-	
+
 	const fetchPromesa = fetch(fuentesUrl);
 
 	fetchPromesa.then(response => {
@@ -74,27 +139,13 @@ function init(){
 	}).then(respuesta =>{
 		const resultado = respuesta.features;
 
-		let listado = document.createElement("div");
-		listado.classList.add("celdas");
-
 		resultado.forEach(falla =>{
 
-			if (secciones.includes(falla.properties.seccion) === false) secciones.push(falla.properties.seccion);
-			if (secciones.includes(falla.properties.seccion_i) === false) secciones.push(falla.properties.seccion_i);
-			
-			let divFalla = document.createElement("div");
-			divFalla.classList.add("individual");
+			if (!secciones.includes(falla.properties.seccion)) secciones.push(falla.properties.seccion);
+			if (!secciones.includes(falla.properties.seccion_i)) secciones.push(falla.properties.seccion_i);
 
-
-	    	divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + falla.properties.nombre;
-	    	// Lo anyadimos
-			listado.appendChild(divFalla);
-			
 		});
-		
 		lanzarSeccion();
-		document.querySelector(".resultados").innerHTML="";
-		document.querySelector(".resultados").appendChild(listado);
 
 	});
 
