@@ -70,6 +70,11 @@ function buscar(){
            divFalla.classList.add("individual");
            divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
+             let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
              listado.appendChild(divFalla);
          }
       }else{
@@ -79,12 +84,22 @@ function buscar(){
           divFalla.classList.add("individual");
           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
+            let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
            divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
+             let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
              listado.appendChild(divFalla);
          }
       }
@@ -97,12 +112,22 @@ function buscar(){
           divFalla.classList.add("individual");
           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
+            let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion >= anoMin) && (falla.properties.anyo_fundacion <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
            divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
+             let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
              listado.appendChild(divFalla);
          }
       }else{
@@ -112,12 +137,22 @@ function buscar(){
           divFalla.classList.add("individual");
           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
+            let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
            divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
+             let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
              listado.appendChild(divFalla);
          }
       }
@@ -178,7 +213,7 @@ function buscarUbicacion(coordenadas) {
 	let coordenadasMapa = getWGSCoordinates(coordenadas);
 
 	var map = L.map('ubi').setView([coordenadasMapa[0], coordenadasMapa[1]], 15);
-	/* mapa.addEventListener('focusout', function () {
+	mapa.addEventListener('focusout', function () {
 		mapa.style.visibility = 'hidden';
 		map.off();
 		map.remove();
@@ -190,7 +225,7 @@ function buscarUbicacion(coordenadas) {
 	newMapa.setAttribute("id", "ubi");
 	padreMapa.appendChild(newMapa);
 	
-	}); */
+	});
 
 
 	let tilerMapUrl = 'https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=FeZF25xvZUuP463NS59g';
