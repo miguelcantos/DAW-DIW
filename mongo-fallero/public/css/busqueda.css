@@ -14,7 +14,7 @@ body {
   -moz-border-radius: 18px 18px 18px 18px;
   -webkit-border-radius: 18px 18px 18px 18px;
   border: 3px solid #ffffff;
-  height: 450px;
+  height: 475px;
   margin: 3%;
 
 }
@@ -35,6 +35,50 @@ body {
   text-align: center;
   font-weight: 800;
   background-color: #ffffff;
+}
+
+/* .individual input{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  text-decoration: none;
+  padding: 15px;
+  font-family: arial;
+  text-transform: uppercase;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #bfb496;
+  
+} */
+
+#ubi{
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 20%;
+  left: 30%;
+  margin-top: -5%;
+  /* Negative half of height. */
+  margin-left: -20%;
+  /* Negative half of width. */
+  border: 5px solid black;
+  visibility: hidden;
+}
+
+
+
+#ubi *{
+  margin: 0px;
+  padding: 0px;
+}
+
+.individual input:hover{
+    color: black;
+    background-color: #ffffff;
+    text-decoration: none;
 }
 /* .resultados ul li {
   border: 1px solid grey;

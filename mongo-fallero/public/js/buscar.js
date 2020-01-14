@@ -43,6 +43,7 @@ function buscar(){
 	// Por cada uno de ellos
 	resultado.forEach(falla=>{
 
+    
     let secciones = document.getElementById("seleccionSec");
     let anoMax = document.getElementById("anoMax").value;
     let anoMin = document.getElementById("anoMin").value;
@@ -53,14 +54,21 @@ function buscar(){
         if(anoMax == 0 && anoMin == 0){
           let divFalla = document.createElement("div");
           divFalla.classList.add("individual");
-          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" ;
+
             // Lo anyadimos
+            let ubicacion = document.createElement("button");
+				    ubicacion.innerText = "UBICACIÓN";
+				    ubicacion.onclick = function () { buscarUbicacion(falla.geometry.coordinates); };
+				    ubicacion.classList.add("boton");
+				    divFalla.appendChild(ubicacion);
             listado.appendChild(divFalla);
+  
         // solo funciona si los dos campos estan vacios o los dos campos estan llenos
          }else if((falla.properties.anyo_fundacion >= anoMin) && (falla.properties.anyo_fundacion <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
-           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
              listado.appendChild(divFalla);
          }
@@ -69,13 +77,13 @@ function buscar(){
         if(anoMax == 0 && anoMin == 0){
           let divFalla = document.createElement("div");
           divFalla.classList.add("individual");
-          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
-           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
              listado.appendChild(divFalla);
          }
@@ -87,13 +95,13 @@ function buscar(){
         if(anoMax == 0 && anoMin == 0){
           let divFalla = document.createElement("div");
           divFalla.classList.add("individual");
-          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion >= anoMin) && (falla.properties.anyo_fundacion <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
-           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
              listado.appendChild(divFalla);
          }
@@ -102,13 +110,13 @@ function buscar(){
         if(anoMax == 0 && anoMin == 0){
           let divFalla = document.createElement("div");
           divFalla.classList.add("individual");
-          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+          divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
             // Lo anyadimos
             listado.appendChild(divFalla);
          }else if((falla.properties.anyo_fundacion_i >= anoMin) && (falla.properties.anyo_fundacion_i <= anoMax) ){
            let divFalla = document.createElement("div");
            divFalla.classList.add("individual");
-           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>";
+           divFalla.innerHTML = "<img src=" + falla.properties.boceto_i + "><br>" + "<p>" + falla.properties.nombre + "</p>" + "<input type=\"button\" value=\"UBICACIÓN\"></input>";
              // Lo anyadimos
              listado.appendChild(divFalla);
          }
@@ -160,6 +168,46 @@ function lanzarSeccion() {
 		desSeccion.add(option);
 
 	}
+}
+
+function buscarUbicacion(coordenadas) {
+
+	mapa = document.getElementById('ubi');
+	mapa.style.visibility = 'visible';
+
+	let coordenadasMapa = getWGSCoordinates(coordenadas);
+
+	var map = L.map('ubi').setView([coordenadasMapa[0], coordenadasMapa[1]], 15);
+	/* mapa.addEventListener('focusout', function () {
+		mapa.style.visibility = 'hidden';
+		map.off();
+		map.remove();
+
+	padreMapa = document.getElementById('ubi').parentNode;
+	padreMapa.removeChild(mapa);
+
+	var newMapa = document.createElement("div");
+	newMapa.setAttribute("id", "ubi");
+	padreMapa.appendChild(newMapa);
+	
+	}); */
+
+
+	let tilerMapUrl = 'https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=FeZF25xvZUuP463NS59g';
+	L.tileLayer(tilerMapUrl, {
+		attribution: 'Map data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, Imagery © <a href="http://www.kartena.se/">Kartena</a>',
+	}).addTo(map);
+
+	mapa.focus();
+}
+
+function getWGSCoordinates(coordenadas) {
+
+	let firstProjection = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
+	let secondProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+	coordenadas = proj4(firstProjection, secondProjection, coordenadas);
+
+	return [coordenadas[1], coordenadas[0]];
 }
 
 // The mother of the lamb.
