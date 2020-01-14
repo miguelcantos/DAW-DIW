@@ -54,6 +54,12 @@ body {
   
 } 
 
+.boton:hover{
+  color: black;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
 #ubi{
   position: fixed;
   width: 80%;
@@ -75,11 +81,7 @@ body {
   padding: 0px;
 }
 
-.individual input:hover{
-    color: black;
-    background-color: #ffffff;
-    text-decoration: none;
-}
+
 /* .resultados ul li {
   border: 1px solid grey;
   padding: 10px;
