@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1> Graficos A - 01</h1>
+        <h1> Graficos B - 01</h1>
     </header>
 
     <main>
@@ -25,23 +25,25 @@
         let ctx = canvas.getContext("2d");
 
         const dioses = [
-        {nombre:"Cthulhu", poder:1000, color:"green"},
+        {nombre:"Cthulhu", poder:400, color:"green"},
         {nombre:"Nyarlatothep", poder:600, color:"red"},
-        {nombre:"Azazoth", poder:1400, color:"grey"},
-        {nombre:"Pepe", poder:800, color:"purple"}
+        {nombre:"Azazoth", poder:320, color:"grey"},
+        {nombre:"Pepe", poder:700, color:"purple"}
         ];
         
-        let total = dioses.reduce((suma,{poder}) => suma += poder,0);
-        let anguloActual = -0.5 * Math.PI;
-
+        var y=100;
+        var X=100;
+        var Y=800;
         for(let dios of dioses){
                 ctx.beginPath();
                 ctx.fillStyle = dios.color;
-                let trozo = dios.poder/total*2*Math.PI;
-                ctx.arc(400,400,200, anguloActual,anguloActual + trozo);
-                ctx.lineTo(400,400);
+                ctx.moveTo(X,Y);
+                ctx.lineTo(X,Y-dios);
+                ctx.lineTo(dios,y+=100);
+                ctx.lineTo();
                 ctx.fill();
-                anguloActual = anguloActual + trozo;
+                ctx.stroke();
+
         }
 
     </script>
