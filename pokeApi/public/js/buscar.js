@@ -1,38 +1,9 @@
-const pokeApi = "";
-
+const pokeApi = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=10";
+let arrayPokemon = [];
 
 function buscar(){
 
-  const fetchPromesa = fetch(pokeApi);
 
-  // Cuando se resuelva la promesa
-  fetchPromesa.then(response => {
-  // la pasamos a JSON
-  return response.json();
-  // Y entonces
-  
-  }).then(respuesta =>{
-  // Filtramos los resultados con el filtro definido anteriormente
-
-    console.log(respuesta.features[1].properties);
-    const resultado=respuesta.features.filter(filtroLetra);
-
-    // Una vez tenemos el listado filtrado pasamos a crear
-    // cada uno de los <li> que representan
-    let listado=document.createElement("ul");
-
-    // Por cada uno de ellos 
-    resultado.forEach(fuente=>{
-    // Creamos un <li>
-    let calleli=document.createElement("li");
-    calleli.innerHTML=fuente.properties.calle+" -- ["+fuente.geometry.coordinates+"]";
-    // Lo anyadimos
-    listado.appendChild(calleli);	    
-    });
-
-  document.querySelector(".resultados").innerHTML="";
-  document.querySelector(".resultados").appendChild(listado);
-  });
 }
 
 
@@ -44,6 +15,21 @@ function init(){
   // Texto cambia en el <input>
   document.querySelector(`input[type="text"]`).addEventListener("input",toUpp);
 
+  const fetchPromesa = fetch(pokeApi);
+
+  // Cuando se resuelva la promesa
+  fetchPromesa.then(response => {
+  // la pasamos a JSON
+  return response.json();
+  // Y entonces
+
+  }).then(respuesta =>{
+  // Filtramos los resultados con el filtro definido anteriormente
+
+    const resultado = respuesta.features.filter(filtroLetra);
+    arrayPokemon.push(resultado);
+    console.log(resultado);
+  });
 }
 
 function toUpp(){
