@@ -13,7 +13,7 @@ function buscar() {
 
     let divPokemon = document.createElement("div");
     divPokemon.classList.add("pokemon");
-/*     console.log(pokemon.types[0].type.name); */
+    /*     console.log(pokemon.types[0].type.name); */
     divPokemon.style.backgroundColor = tipoColor(pokemon.types[0].type.name);
 
     let img = document.createElement("img");
@@ -22,9 +22,22 @@ function buscar() {
     let p = document.createElement("p");
     p.innerHTML = pokemon.name;
 
+    let ataque = document.createElement("div");
+    ataque.innerHTML = "<p>Moves<p>" +
+      "<p>" + pokemon.moves[0].move.name + "<p>" +
+      "<p>" + pokemon.moves[1].move.name + "<p>" +
+      "<p>" + pokemon.moves[2].move.name + "<p>";
+
+    let otros = document.createElement("div");
+    otros.innerHTML = "<p>Type<p>" +
+      "<p>" + pokemon.types[0].type.name + "<p>" +
+      "<p> Experience <p>" +
+      "<p>" + pokemon.base_experience + "<p>";
+
     divPokemon.appendChild(img);
     divPokemon.appendChild(p);
-
+    divPokemon.appendChild(ataque);
+    divPokemon.appendChild(otros);
     divGrande.appendChild(divPokemon);
   });
 
