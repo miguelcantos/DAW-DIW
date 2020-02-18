@@ -1,7 +1,82 @@
-body {
-background-image: url(../media/fondo.jpeg);
-background-repeat: no-repeat;
-background-size: cover;
+/* $font-stack: Helvetica,sans-serif;
+$primary-color: #333;
+$font-color:#DDD;
+
+body{
+
+    font: 100% $font-stack;
+    background-color: $primary-color;
+
 }
 
 
+%fuente-basica{
+    border: 1px solid grey;
+    padding:10px;
+    border-radius:10px;
+    color:$font-color;
+}
+
+.resultados{
+    ul{
+	li{
+	    list-style:none;
+	    width:50vw;
+	    @extend %fuente-basica;
+	}
+    }
+} */
+@font-face {
+  font-family: pokemon;
+  src: url(../media/pokemon/PokemonSolid.ttf); }
+body {
+  background: url(../media/fondo.jpeg) fixed;
+  background-size: cover; }
+  body #portada {
+    margin-left: 38%; }
+    body #portada img {
+      width: 35%;
+      height: 35%; }
+  body #texto {
+    width: 250px;
+    border-radius: 10px; }
+  body #boton {
+    border-radius: 10px;
+    width: 100px;
+    margin-left: 5%;
+    background: #90b818;
+    background: -moz-linear-gradient(left, #90b818 0%, #dffa17 27%, #f58711 53%, #ff0a0a 73%, #e0217e 91%, #e0217e 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #90b818), color-stop(27%, #dffa17), color-stop(53%, #f58711), color-stop(73%, #ff0a0a), color-stop(91%, #e0217e), color-stop(100%, #e0217e));
+    background: -webkit-linear-gradient(left, #90b818 0%, #dffa17 27%, #f58711 53%, #ff0a0a 73%, #e0217e 91%, #e0217e 100%);
+    background: -o-linear-gradient(left, #90b818 0%, #dffa17 27%, #f58711 53%, #ff0a0a 73%, #e0217e 91%, #e0217e 100%);
+    background: -ms-linear-gradient(left, #90b818 0%, #dffa17 27%, #f58711 53%, #ff0a0a 73%, #e0217e 91%, #e0217e 100%);
+    background: linear-gradient(to right, #90b818 0%, #dffa17 27%, #f58711 53%, #ff0a0a 73%, #e0217e 91%, #e0217e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#90b818', endColorstr='#e0217e', GradientType=1 ); }
+  body .busqueda #busquedaform {
+    width: 400px;
+    display: block;
+    margin: 0 auto; }
+  body .resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin: 5%; }
+    body .resultados .pokemon {
+      border-radius: 10px;
+      margin-left: 2.5%;
+      margin-top: 5%;
+      margin-right: 2.5%; }
+      body .resultados .pokemon img {
+        padding-bottom: 2.5%;
+        display: block;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%; }
+      body .resultados .pokemon p {
+        text-align: center;
+        font-weight: 800;
+        font-family: pokemon;
+        -webkit-text-stroke: 0.5px white;
+        letter-spacing: 1.5px; }
+
+/*# sourceMappingURL=busqueda.css.map */
