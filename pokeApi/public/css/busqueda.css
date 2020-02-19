@@ -30,10 +30,11 @@ body{
   font-family: pokemon;
   src: url(../media/pokemon/PokemonSolid.ttf); }
 body {
-  background: url(../media/fondo.jpeg) fixed;
+  background: url(../media/fondo3.jpg) fixed;
   background-size: cover; }
   body #portada {
-    margin-left: 38%; }
+    margin-left: 38%;
+    margin-bottom: 2%; }
     body #portada img {
       width: 35%;
       height: 35%; }
@@ -56,6 +57,13 @@ body {
     width: 400px;
     display: block;
     margin: 0 auto; }
+  body #cargando img {
+    padding-bottom: 2.5%;
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%; }
   body .resultados {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -74,9 +82,28 @@ body {
         margin-top: 5%; }
       body .resultados .pokemon p {
         text-align: center;
+        font-weight: 500;
+        font-size: 16px;
+        font-family: pokemon;
+        /* -webkit-text-stroke: 0.5px white; */
+        letter-spacing: 1.5px; }
+      body .resultados .pokemon h1 {
+        text-align: center;
         font-weight: 800;
+        font-size: 26px;
         font-family: pokemon;
         -webkit-text-stroke: 0.5px white;
         letter-spacing: 1.5px; }
+      body .resultados .pokemon h2 {
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        font-family: pokemon;
+        -webkit-text-stroke: 0.5px white;
+        letter-spacing: 1.5px; }
+      body .resultados .pokemon .informacion {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 10%; }
 
 /*# sourceMappingURL=busqueda.css.map */

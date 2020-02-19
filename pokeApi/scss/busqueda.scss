@@ -32,12 +32,13 @@ body{
     src: url(../media/pokemon/PokemonSolid.ttf);
   }
 body {
-    background: url(../media/fondo.jpeg) fixed ;
+    background: url(../media/fondo3.jpg) fixed ;
     background-size: cover;
 
 
     #portada {
         margin-left: 38%;
+        margin-bottom: 2%;
 
         img {
             width: 35%;
@@ -54,7 +55,8 @@ body {
         border-radius: 10px;
         width: 100px;
         margin-left: 5%;
-        background: rgba(144,184,24,1);
+        
+          background: rgba(144,184,24,1);
         background: -moz-linear-gradient(left, rgba(144,184,24,1) 0%, rgba(223,250,23,1) 27%, rgba(245,135,17,1) 53%, rgba(255,10,10,1) 73%, rgba(224,33,126,1) 91%, rgba(224,33,126,1) 100%);
         background: -webkit-gradient(left top, right top, color-stop(0%, rgba(144,184,24,1)), color-stop(27%, rgba(223,250,23,1)), color-stop(53%, rgba(245,135,17,1)), color-stop(73%, rgba(255,10,10,1)), color-stop(91%, rgba(224,33,126,1)), color-stop(100%, rgba(224,33,126,1)));
         background: -webkit-linear-gradient(left, rgba(144,184,24,1) 0%, rgba(223,250,23,1) 27%, rgba(245,135,17,1) 53%, rgba(255,10,10,1) 73%, rgba(224,33,126,1) 91%, rgba(224,33,126,1) 100%);
@@ -71,6 +73,16 @@ body {
             margin: 0 auto;
         }
 
+    }
+    #cargando{
+        img{
+            padding-bottom: 2.5%;
+            display: block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5%;
+        }   
     }
 
     .resultados {
@@ -94,12 +106,37 @@ body {
                 margin-top: 5%;
             }
 
-            p {
+            p{
+                text-align: center;
+                font-weight: 500;
+                font-size: 16px;
+                font-family: pokemon;
+                /* -webkit-text-stroke: 0.5px white; */
+                letter-spacing: 1.5px;
+            }
+
+            h1 {
                 text-align: center;
                 font-weight: 800;
+                font-size: 26px;
                 font-family: pokemon;
                 -webkit-text-stroke: 0.5px white;
                 letter-spacing: 1.5px;
+            }
+
+            h2{
+                text-align: center;
+                font-weight: 600;
+                font-size: 20px;
+                font-family: pokemon;
+                -webkit-text-stroke: 0.5px white;
+                letter-spacing: 1.5px;
+            }
+
+            .informacion{
+                display: grid;
+                grid-template-columns: 1fr 1fr ;
+                margin-top: 10%;
             }
         }
 

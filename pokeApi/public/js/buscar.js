@@ -4,10 +4,11 @@ let arrayPokemonPro = [];
 
 
 function buscar() {
+
   console.log(arrayPokemon[0]);
   document.querySelector(".resultados").innerHTML = "";
-
-  arrayPokemon.forEach(pokemon => {
+  let contador=1;
+  arrayPokemon.filter(filtroLetra).forEach(pokemon => {
 
     let divGrande = document.getElementById("todo");
 
@@ -18,26 +19,40 @@ function buscar() {
 
     let img = document.createElement("img");
     img.setAttribute("src", pokemon.sprites.front_default)
+    img.setAttribute("alt", "Es: "+pokemon.name);
 
-    let p = document.createElement("p");
-    p.innerHTML = pokemon.name;
-
+    let h1 = document.createElement("h1");
+    h1.tabIndex= contador;
+    contador++;
+    h1.innerHTML = pokemon.name + " #"+pokemon.order;
+    
+    
+    let divInfo = document.createElement("div");
+    divInfo.classList.add("informacion");
+    
     let ataque = document.createElement("div");
-    ataque.innerHTML = "<p>Moves<p>" +
-      "<p>" + pokemon.moves[0].move.name + "<p>" +
-      "<p>" + pokemon.moves[1].move.name + "<p>" +
-      "<p>" + pokemon.moves[2].move.name + "<p>";
+    ataque.tabIndex= contador;
+    contador++;
+    ataque.innerHTML = "<h2>Moves</h2>" +
+      "<p>" + pokemon.moves[0].move.name + "</p>" +
+      "<p>" + pokemon.moves[1].move.name + "</p>" +
+      "<p>" + pokemon.moves[2].move.name + "</p>";
+   
 
     let otros = document.createElement("div");
-    otros.innerHTML = "<p>Type<p>" +
-      "<p>" + pokemon.types[0].type.name + "<p>" +
-      "<p> Experience <p>" +
-      "<p>" + pokemon.base_experience + "<p>";
+    otros.tabIndex= contador;
+    contador++;
+    otros.innerHTML = "<h2>Type</h2>" +
+      "<p>" + pokemon.types[0].type.name + "</p>" +
+      "<h2> Experience </h2>" +
+      "<p>" + pokemon.base_experience + "</p>";
+  
 
     divPokemon.appendChild(img);
-    divPokemon.appendChild(p);
-    divPokemon.appendChild(ataque);
-    divPokemon.appendChild(otros);
+    divPokemon.appendChild(h1);
+    divInfo.appendChild(ataque);
+    divInfo.appendChild(otros);
+    divPokemon.appendChild(divInfo);
     divGrande.appendChild(divPokemon);
   });
 
@@ -51,6 +66,7 @@ function promesaPokemon(url) {
 
 }
 
+//lo utilizamos para elegir el fondo del div a traves del tipo del pokemon
 function tipoColor(tipoPokemon) {
 
   switch (tipoPokemon) {
@@ -99,24 +115,25 @@ function init() {
   console.log("iniciado");
   // Click en el boton de buscar
   document.querySelector(`input[type="button"]`).addEventListener("click", buscar);
-  // Texto cambia en el <input>
-  document.querySelector(`input[type="text"]`).addEventListener("input", toUpp);
 
   //hacemos un fetch para coger la url de cada uno de los pokemons
   const fetchPromesa = fetch(pokeApi);
   fetchPromesa.then(response => {
     return response.json();
   }).then(respuesta => {
-
+    //creamos una array de promesas 
     respuesta.results.forEach(pokemon => {
       arrayPokemonPro.push(promesaPokemon(pokemon.url));
 
     });
 
+    // a traves del promise.all llenamos el array con los objetos de pokemons
     Promise.all(arrayPokemonPro).then(pokemon => {
       /* console.log(pokemon); */
       arrayPokemon.push(...pokemon);
-
+      
+      document.getElementById("cargando").style.display = "none" ;
+      
     });
 
     /*    console.log(respuesta);
@@ -140,10 +157,10 @@ function init() {
 
 }
 
-function toUpp() {
-
-  document.querySelector(`input[name="nombre"]`).value = document.querySelector(`input[name="nombre"]`).value.toUpperCase();
-
+//esta funcion la utilizamos para poder filtrar a traves del input, cualquier pokemon de la array.
+function filtroLetra(elemento){
+  let letra = document.querySelector(`input[name="nombre"]`).value;
+  return elemento.name.includes(letra);
 }
 
 window.onload = init;
